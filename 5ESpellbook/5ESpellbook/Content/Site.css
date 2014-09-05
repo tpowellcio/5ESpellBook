@@ -1,0 +1,440 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    -webkit-print-color-adjust: exact;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.cardbody {
+    height: 90mm;
+    width: 2.5in;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; /* future proofing */
+    display: inline-block;
+    font-size: 10px;
+}
+
+    .cardbody .header {
+        background-color: white;
+        position: relative;
+        top: 10px;
+        height: 20px;
+        margin: 0px 10px 0px 10px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .cardbody .subheader {
+        background-color: white;
+        position: relative;
+        top: 15px;
+        height: 20px;
+        margin: 0px 10px 0px 10px;
+    }
+
+    .cardbody .action {
+        background-color: white;
+        position: relative;
+        top: 20px;
+        height: 20px;
+        width: 45%;
+        margin: 0px 0px 0px 10px;
+        display: inline-block;
+    }
+
+    .cardbody .range {
+        background-color: white;
+        position: relative;
+        top: 20px;
+        width: 45%;
+        height: 20px;
+        margin: 0px 0px 0px 0px;
+        display: inline-block;
+    }
+
+    .cardbody .components {
+        background-color: white;
+        position: relative;
+        top: 23px;
+        height: 20px;
+        width: 45%;
+        margin: 0px 0px 0px 10px;
+        display: inline-block;
+    }
+
+    .cardbody .duration {
+        background-color: white;
+        position: relative;
+        top: 23px;
+        width: 45%;
+        height: 20px;
+        margin: 0px 0px 0px 0px;
+        display: inline-block;
+    }
+
+    .cardbody .description {
+        background-color: white;
+        position: relative;
+        top: 26px;
+        height: 215px;
+        margin: 0px 10px 0px 10px;
+    }
+
+    .cardbody .fullDescription {
+        background-color: white;
+        position: relative;
+        top: 15px;
+        height: 290px;
+        margin: 0px 10px 0px 10px;
+        font-size: 10px;
+    }
+
+    .cardbody div {
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px; /* future proofing */
+        padding: 3px 3px 3px 3px;
+    }
+
+.cardbodyIcon {
+    opacity: .3;
+    float: right;
+    height: 15px;
+    width: 15px;
+    position: relative;
+}
+
+.cardbodyIconSpan {
+    position: absolute;
+}
+
+/*.action::after {
+    width: 15px;
+    height: 15px;
+    display: inline;
+    float: right;
+    background: transparent url('../../Content/images/action.png');
+    opacity: .3;
+    content: " ";
+}
+
+.range::after {
+    width: 15px;
+    height: 15px;
+    display: inline;
+    float: right;
+    background: transparent url('../../Content/images/range.png');
+    opacity: .3;
+    content: " ";
+}
+
+.duration::after {
+    width: 15px;
+    height: 15px;
+    display: inline;
+    float: right;
+    background: transparent url('../../Content/images/duration.png');
+    opacity: .3;
+    content: " ";
+}
+
+.components::before {
+    width: 15px;
+    height: 15px;
+    display: inline;
+    float: right;
+    background: transparent url('../../Content/images/components.png');
+    opacity: .3;
+    content: " ";
+}*/
+
+.bold {
+    font-weight: bold;
+}
+
+
+td.hovered {
+    background-color: lightblue;
+    color: #666;
+}
+
+.error, .alert, .notice, .success, .info {
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border: 2px solid #ddd;
+}
+
+.error, .alert {
+    background: #fbe3e4;
+    color: #8a1f11;
+    border-color: #fbc2c4;
+}
+
+.notice {
+    background: #fff6bf;
+    color: #514721;
+    border-color: #ffd324;
+}
+
+.success {
+    background: #e6efc2;
+    color: #264409;
+    border-color: #c6d880;
+}
+
+.info {
+    background: #d5edf8;
+    color: #205791;
+    border-color: #92cae4;
+}
+
+.error a, .alert a {
+    color: #8a1f11;
+}
+
+.notice a {
+    color: #514721;
+}
+
+.success a {
+    color: #264409;
+}
+
+.info a {
+    color: #205791;
+}
+
+/* Spell schools */
+.Evocation, .evocation {
+    -webkit-print-color-adjust: exact;
+    background-color: #FF3300;
+    background: -webkit-linear-gradient(#FF3300, #FFAD99); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FF3300, #FFAD99); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FF3300, #FFAD99); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FF3300, #FFAD99); /* Standard syntax */
+}
+
+
+.abjuration, .Abjuration {
+    -webkit-print-color-adjust: exact;
+    background: -webkit-linear-gradient(#6699FF, #9933FF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#6699FF, #9933FF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#6699FF, #9933FF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#6699FF, #9933FF); /* Standard syntax */
+}
+
+.conjuration, .Conjuration {
+    -webkit-print-color-adjust: exact;
+    background: -webkit-linear-gradient(#33CCCC, #00FF99); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#33CCCC, #00FF99); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#33CCCC, #00FF99); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#33CCCC, #00FF99); /* Standard syntax */
+}
+
+.divination, .Divination {
+    -webkit-print-color-adjust: exact;
+    background: -webkit-linear-gradient(#FFCC00, #FFFF99); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FFCC00, #FFFF99); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FFCC00, #FFFF99); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FFCC00, #FFFF99); /* Standard syntax */
+}
+
+.enchantment, .Enchantment {
+    -webkit-print-color-adjust: exact;
+    background: -webkit-linear-gradient(#66FF66, #00CCFF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#66FF66, #00CCFF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#66FF66, #00CCFF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#66FF66, #00CCFF); /* Standard syntax */
+}
+
+.illusion, .Illusion {
+    -webkit-print-color-adjust: exact;
+    background: -webkit-linear-gradient(#3366FF, #CC0099); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3366FF, #CC0099); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3366FF, #CC0099); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3366FF, #CC0099); /* Standard syntax */
+}
+
+.necromancy, .Necromancy {
+    -webkit-print-color-adjust: exact;
+    background: -webkit-linear-gradient(#66FF66, #006666); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#66FF66, #006666); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#66FF66, #006666); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#66FF66, #006666); /* Standard syntax */
+}
+
+.transmutation, .Transmutation {
+    -webkit-print-color-adjust: exact;
+    background: -webkit-linear-gradient(#FF6600, #000066); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FF6600, #000066); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FF6600, #000066); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FF6600, #000066); /* Standard syntax */
+}
+
+.evocationSolid {
+    -webkit-print-color-adjust: exact;
+    background-color: #FF3300;
+ }
+
+.abjurationSolid {
+    -webkit-print-color-adjust: exact;
+    background-color: #6699FF;
+ }
+
+.conjurationSolid {
+    -webkit-print-color-adjust: exact;
+    background-color: #33CCCC;
+ }
+
+.divinationSolid {
+    -webkit-print-color-adjust: exact;
+    background-color: #FFCC00;
+ }
+
+.enchantmentSolid {
+    -webkit-print-color-adjust: exact;
+    background-color: #66FF66;
+ }
+
+.illusionSolid {
+    -webkit-print-color-adjust: exact;
+    background-color: #3366FF;
+ }
+
+.necromancySolid {
+    -webkit-print-color-adjust: exact;
+    background-color: #006666;
+ }
+
+.transmutationSolid {
+    -webkit-print-color-adjust: exact;
+    background-color: #FF6600;
+ }
+
+.evocationBlack {
+    -webkit-print-color-adjust: exact;
+    background-color: #000;
+ }
+
+.abjurationBlack {
+    -webkit-print-color-adjust: exact;
+    background-color: #000;
+ }
+
+.conjurationBlack {
+    -webkit-print-color-adjust: exact;
+    background-color: #000;
+ }
+
+.divinationBlack {
+    -webkit-print-color-adjust: exact;
+    background-color: #000;
+ }
+
+.enchantmentBlack {
+    -webkit-print-color-adjust: exact;
+    background-color: #000;
+ }
+
+.illusionBlack {
+    -webkit-print-color-adjust: exact;
+    background-color: #000;
+ }
+
+.necromancyBlack {
+    -webkit-print-color-adjust: exact;
+    background-color: #000;
+ }
+
+.transmutationBlack {
+    -webkit-print-color-adjust: exact;
+    background-color: #000;
+ }
+
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px; /* half width of the spinner gif */
+    margin-top: -50px; /* half height of the spinner gif */
+    text-align: center;
+    z-index: 1234;
+    overflow: auto;
+    width: 100px; /* width of the spinner gif */
+    height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+
+.odd {
+    background-color: rgba(122,223,234,0.6) !important;
+}
+
+.even {
+    background-color: rgba(0,0,0,0) !important;
+}
+
+.navbar-brand-submenu {
+    float: right;
+    padding: 15px 15px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: rgb(153, 153, 153);
+}
+
+@media print {
+    .notice {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .container {
+        margin-top: 0px;
+    }
+
+    body {
+        padding-top: 0;
+        padding-bottom: 0px;
+        -webkit-print-color-adjust: exact;
+    }
+}

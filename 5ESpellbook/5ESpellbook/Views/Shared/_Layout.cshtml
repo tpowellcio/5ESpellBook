@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - DNDNS</title>
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    @*<script src="@Url.Content("~/Scripts/jquery.textfill.min.js")" type="text/javascript"></script>*@
+
+    <link rel="stylesheet" href="@Url.Content("~/content/bootstrap.css")">
+    <link rel="stylesheet" href="@Url.Content("~/content/site.css")">
+
+    <link rel="icon" href="@Url.Content("~/content/images/favicon.ico")" />
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#spinner").hide();
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header" style="float:left">
+                @Html.ActionLink("Spellbook Generator", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-brand-submenu">
+                @Html.ActionLink("About", "About") | @Html.ActionLink("Changelog", "Changelog") | @Html.ActionLink("FAQ", "FAQ")
+            </div>
+        </div>
+    </div>
+    <div id="spinner" class="spinner">
+        <img id="img-spinner" src="@Url.Content("~/Content/images/ajax-loader.gif")" alt="Loading" />
+        @*<img id="img-spinner" src="http://i.imgur.com/6Uqpcdx.gif" alt="Loading" />*@
+    </div>
+    <div class="container" style="margin-top: 10px;">
+        <div class="notice">
+            See new @Html.ActionLink("Changelog", "Changelog") and @Html.ActionLink("FAQ", "FAQ") pages for next updates/questions.
+        </div>
+       
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="success">
+                @TempData["SuccessMessage"].ToString()
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="error">
+                @TempData["ErrorMessage"].ToString()
+            </div>
+        }
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - /u/reiphil
+        </footer>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FAQ</h2>
+
+<div style="border: 1px dotted gray">
+    <h3>Table of Contents</h3>
+    <a href="#print">How do I print spell cards with color?</a><br />
+    <a href="#contribute">How do I report issues or who do I contact if I want to contribute?</a>
+</div>
+<br />
+<br />
+<div>
+    <div id="print" style="padding-top: 50px;">
+        <h4>How do I print spell cards with color?</h4>
+        <p>
+            You must enable the background colors option in your browser.</p>
+        <h5>Chrome</h5>
+        <img src="@Url.Content("~/Content/images/chrome1.jpg")" />
+        <h5>Firefox</h5>
+        <img src="@Url.Content("~/Content/images/firefox1.jpg")" /><br />
+        <img src="@Url.Content("~/Content/images/firefox2.jpg")" />
+        <h5>IE</h5>
+        <img src="@Url.Content("~/Content/images/ie1.jpg")" /><br />
+        <img src="@Url.Content("~/Content/images/ie2.jpg")" />
+    </div>
+
+    <div id="contribute" style="padding-top: 50px;">
+        <h4>How do I report issues or who do I contact if I want to contribute?</h4>
+        <p>Thanks for taking the interest in reporting issues or contributing fixes!  /u/reiphil is no longer upkeeping this code.  If this has been published anywhere but 5espellbook.azurewebsites.net you should contact the owner of that website.</a>.
+</p>
+    </div>
+</div>

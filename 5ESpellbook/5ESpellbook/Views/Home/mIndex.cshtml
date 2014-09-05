@@ -1,0 +1,192 @@
+﻿@model _5ESpellbook.Models.SpellIndexModel
+@{
+    ViewBag.Title = "Spell Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#spinner").hide();
+
+        $('#search').keyup(function () {
+            searchTable($(this).val());
+        });
+
+        $(".slide-button").click(function () {
+            $("#slide-panel").slideToggle("fast", function () {
+                // All done, set the appropriate icon
+                if ($('#slide-panel').css('display') == 'none') {
+                    $('.toggle-image').attr('src', '../Content/images/plus_8x8.png');
+                    $('.toggle-image').css('margin-bottom', '0px');
+                }
+                else {
+                    $('.toggle-image').attr('src', '../Content/images/minus_8x2.png');
+                    $('.toggle-image').css('margin-bottom', '3px');
+                }
+            });
+        });
+
+        $('#selectAll').click(function (e) {
+            var table = $(e.target).closest('table');
+            $('td input:checkbox', table).prop('checked', this.checked);
+        });
+
+        zebraStriping();
+
+    });
+
+
+    function searchTable(inputVal) {
+        var table = $('#tblData > tbody');
+        table.find('tr').each(function (index, row) {
+            var allCells = $(row).find('td');
+            if (allCells.length > 0) {
+                var found = false;
+                allCells.each(function (index, td) {
+                    var regExp = new RegExp(inputVal, 'i');
+                    if (regExp.test($(td).text())) {
+                        found = true;
+                        return false;
+                    }
+                });
+                if (found == true) $(row).show(); else $(row).hide();
+            }
+        });
+
+        zebraStriping();
+    }
+
+    function zebraStriping() {
+        var table = document.getElementById("tblData");
+        var k = 0;
+        for (var j = 0, row; row = table.rows[j]; j++) {
+            if (!(row.style.display === "none")) {
+                if (k % 2) {
+                    row.style.backgroundColor = "rgba(122,223,234,0.6)";
+                } else {
+                    row.style.backgroundColor = "rgba(0,0,0,0.0)";
+                }
+                k++;
+            }
+        }
+    }
+</script>
+<div style="width: 100%">
+    <div id="filterDiv">
+        <div id="slide-button-wrap" style="padding-top: 4px; margin-bottom: 10px;">
+            <a href="#" class="slide-button" style="text-decoration: none;">Advanced Search</a>&nbsp;<img alt="img" alt="toggle" class="toggle-image"
+                                                                                                          src="@Url.Content("~/Content/images/plus_8x8.png")" />
+        </div>
+
+        <div id="slide-panel" style="display: none;">
+
+            @using (Html.BeginForm("SpellIndexFilter", "Home"))
+            {
+                <table>
+                    <tr>
+                        <td>
+                            Filter Classes:
+                        </td>
+                        <td>
+                            Filter Schools:
+                        </td>
+
+                        <td>
+                            Filter Levels:
+                        </td>
+                        <td>
+                            Filter Actions:
+                        </td>
+                        <td>
+                            Filter Keywords:
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            @Html.ListBoxFor(x => x.SelectedClasses, Model.ClassList, new { style = "width: 150px; height: 175px", @class = "listBox" })
+                        </td>
+                        <td>
+                            @Html.ListBoxFor(x => x.SelectedSchools, Model.SchooLlist, new { style = "width: 150px; height: 175px", @class = "listBox" })
+                        </td>
+                        <td>
+                            @Html.ListBoxFor(x => x.SelectedLevels, Model.LevelList, new { style = "width: 150px; height: 175px", @class = "listBox" })
+                        </td>
+                        <td>
+                            @Html.ListBoxFor(x => x.SelectedActions, Model.ActionList, new { style = "width: 150px; height: 175px", @class = "listBox" })
+                        </td>
+                        <td>
+                            @Html.ListBoxFor(x => x.SelectedKeywords, Model.KeywordList, new { style = "width: 150px; height: 175px", @class = "listBox" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#" onclick="$('.listBox').find('option').attr('selected', false)">Clear filters</a>
+                        </td>
+                        <td colspan="4">
+                            <div style="width: 100%; text-align: right">
+                                <input type="submit" value="Search" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div style="border-bottom: 1px solid black; margin-bottom: 20px;">&nbsp;</div>
+            }
+        </div>
+
+    </div>
+    <div id="dataDiv">
+        <input type="text" id="search" placeholder="  live search" />
+        @using (Html.BeginForm("Generate", "Home"))
+        {
+            <table id="tblData" style="width: auto;">
+                <thead>
+                    <tr style="width: 100%">
+                        <th style="width: 25px; padding-right: 10px;"><input type="checkbox" id="selectAll" /></th>
+                        <th style="width: 200px; padding-right: 10px;" data-sort="string">Name</th>
+                        <th style="width: 150px; padding-right: 10px;" data-sort="string">Of Class</th>
+                        <th style="width: 25px; padding-right: 10px;" data-sort="string">Lvl</th>
+                        <th style="width: 100px; padding-right: 10px;" data-sort="string">School</th>
+                        <th style="width: 100px; padding-right: 10px;" data-sort="string">Action</th>
+                        <th style="width: 100px; padding-right: 10px;" data-sort="string">Range</th>
+                        <th style="width: 50px; padding-right: 10px;" data-sort="string">Ritual?</th>
+                        <th style="width: 50px; padding-right: 10px;">--</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var spell in Model.Spells)
+                    {
+                        <tr>
+                            <td><input type="checkbox" name="SelectedSpells" value="@spell.SpellID" /></td>
+                            <td>@spell.Name</td>
+                            <td>@spell.OfClass</td>
+                            @if (spell.Level == 0)
+                            {
+                                <td>CT</td>
+                            }
+                            else
+                            {
+                                <td>@spell.Level</td>
+                            }
+                            <td>@spell.School</td>
+                            <td>@spell.Action</td>
+                            <td>@spell.Range</td>
+                            <td>@spell.IsRitual</td>
+                            <td>@Html.ActionLink("Edit", "AddSpell", new { id = @spell.SpellID })</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">@Html.ActionLink("Add new spell", "AddSpell", new { id = 0 })</td>
+                        <td style="text-align: right">@Model.Spells.Count spells listed...</td>
+                        <td colspan="3" align="right"><input type="submit" name="ofType" value="Generate Spellbook" /></td>
+                        <td colspan="3" align="right"><input type="submit" name="ofType" value="Generate Spell Cards" /></td>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+    </div>
+</div>

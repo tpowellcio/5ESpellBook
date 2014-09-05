@@ -1,0 +1,131 @@
+﻿@model _5ESpellbook.Models.SpellModel
+
+@{
+    ViewBag.Title = "Add a Spell";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="//cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+
+<h2>Add/Edit a Spell</h2>
+
+@using (Html.BeginForm("Home", "SaveSpell"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(x => x.spell.SpellID)
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.Name)
+                @Html.ValidationMessageFor(model => model.spell.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.Level, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.Level)
+                @Html.ValidationMessageFor(model => model.spell.Level)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.School, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.School)
+                @Html.ValidationMessageFor(model => model.spell.Level)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.OfClass, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.OfClass)
+                @Html.ValidationMessageFor(model => model.spell.OfClass)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.Action, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.Action)
+                @Html.ValidationMessageFor(model => model.spell.Action)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.Range, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.Range)
+                @Html.ValidationMessageFor(model => model.spell.Range)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.Components, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.Components)
+                @Html.ValidationMessageFor(model => model.spell.Components)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.Duration, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.Duration)
+                @Html.ValidationMessageFor(model => model.spell.Duration)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.IsRitual, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.IsRitual)
+                @Html.ValidationMessageFor(model => model.spell.IsRitual)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.spell.Description, new { id = "descriptionEditor" })
+                <script type="text/javascript">
+                    CKEDITOR.replace('descriptionEditor',
+                        {
+                            enterMode: CKEDITOR.ENTER_BR
+                        });
+                </script>
+                @Html.ValidationMessageFor(model => model.spell.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spell.Keywords, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spell.Keywords) (enter in keywords and delimit them by space, IE, "fire acid".  Not all spells need keywords, limit keywords to effects/realm of spell)
+                @Html.ValidationMessageFor(model => model.spell.Keywords)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">Contributor Code:</span>
+            <div class="col-md-10">
+                @Html.TextBox("ContCode")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

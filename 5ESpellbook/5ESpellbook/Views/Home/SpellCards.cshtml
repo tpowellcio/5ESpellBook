@@ -1,0 +1,222 @@
+﻿@model List<_5ESpellbook.Models.SpellModel>
+@{
+    ViewBag.Title = "Spell Cards";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            $("#dataDiv").show();
+
+            //$('.jtextfill').textfill({ maxFontPixels: 14, minFontPixels: 10, debug: true });
+        });
+
+    }(jQuery));
+
+    function gradientColor() {
+        $(".evocationSolid").addClass("evocation");
+        $(".evocationBlack").addClass("evocation");
+        $(".evocationSolid").removeClass("evocationSolid");
+        $(".evocationBlack").removeClass("evocationBlack");
+
+        $(".abjurationSolid").addClass("abjuration");
+        $(".abjurationBlack").addClass("abjuration");
+        $(".abjurationSolid").removeClass("abjurationSolid");
+        $(".abjurationBlack").removeClass("abjurationBlack");
+
+        $(".conjurationSolid").addClass("conjuration");
+        $(".conjurationBlack").addClass("conjuration");
+        $(".conjurationSolid").removeClass("conjurationSolid");
+        $(".conjurationBlack").removeClass("conjurationBlack");
+
+        $(".divinationSolid").addClass("divination");
+        $(".divinationBlack").addClass("divination");
+        $(".divinationSolid").removeClass("divinationSolid");
+        $(".divinationBlack").removeClass("divinationBlack");
+
+        $(".enchantmentSolid").addClass("enchantment");
+        $(".enchantmentBlack").addClass("enchantment");
+        $(".enchantmentSolid").removeClass("enchantmentSolid");
+        $(".enchantmentBlack").removeClass("enchantmentBlack");
+
+        $(".illusionSolid").addClass("illusion");
+        $(".illusionBlack").addClass("illusion");
+        $(".illusionSolid").removeClass("illusionSolid");
+        $(".illusionBlack").removeClass("illusionBlack");
+
+        $(".necromancySolid").addClass("necromancy");
+        $(".necromancyBlack").addClass("necromancy");
+        $(".necromancySolid").removeClass("necromancySolid");
+        $(".necromancyBlack").removeClass("necromancyBlack");
+
+        $(".transmutationSolid").addClass("transmutation");
+        $(".transmutationBlack").addClass("transmutation");
+        $(".transmutationSolid").removeClass("transmutationSolid");
+        $(".transmutationBlack").removeClass("transmutationBlack");
+    }
+
+    function solidColor() {
+        $(".evocation").addClass("evocationSolid");
+        $(".evocationBlack").addClass("evocationSolid");
+        $(".evocation").removeClass("evocation");
+        $(".evocationBlack").removeClass("evocationBlack");
+
+        $(".abjuration").addClass("abjurationSolid");
+        $(".abjurationBlack").addClass("abjurationSolid");
+        $(".abjuration").removeClass("abjuration");
+        $(".abjurationBlack").removeClass("abjurationBlack");
+
+        $(".conjuration").addClass("conjurationSolid");
+        $(".conjurationBlack").addClass("conjurationSolid");
+        $(".conjuration").removeClass("conjuration");
+        $(".conjurationBlack").removeClass("conjurationBlack");
+
+        $(".divination").addClass("divinationSolid");
+        $(".divinationBlack").addClass("divinationSolid");
+        $(".divination").removeClass("divination");
+        $(".divinationBlack").removeClass("divinationBlack");
+
+        $(".enchantment").addClass("enchantmentSolid");
+        $(".enchantmentBlack").addClass("enchantmentSolid");
+        $(".enchantment").removeClass("enchantment");
+        $(".enchantmentBlack").removeClass("enchantmentBlack");
+
+        $(".illusion").addClass("illusionSolid");
+        $(".illusionBlack").addClass("illusionSolid");
+        $(".illusion").removeClass("illusion");
+        $(".illusionBlack").removeClass("illusionBlack");
+
+        $(".necromancy").addClass("necromancySolid");
+        $(".necromancyBlack").addClass("necromancySolid");
+        $(".necromancy").removeClass("necromancy");
+        $(".necromancyBlack").removeClass("necromancyBlack");
+
+        $(".transmutation").addClass("transmutationSolid");
+        $(".transmutationBlack").addClass("transmutationSolid");
+        $(".transmutation").removeClass("transmutation");
+        $(".transmutationBlack").removeClass("transmutationBlack");
+    }
+
+    function blackColor() {
+        $(".evocation").addClass("evocationBlack");
+        $(".evocationSolid").addClass("evocationBlack");
+        $(".evocation").removeClass("evocation");
+        $(".evocationSolid").removeClass("evocationSolid");
+
+        $(".abjuration").addClass("abjurationBlack");
+        $(".abjurationSolid").addClass("abjurationBlack");
+        $(".abjuration").removeClass("abjuration");
+        $(".abjurationSolid").removeClass("abjurationSolid");
+
+        $(".conjuration").addClass("conjurationBlack");
+        $(".conjurationSolid").addClass("conjurationBlack");
+        $(".conjuration").removeClass("conjuration");
+        $(".conjurationSolid").removeClass("conjurationSolid");
+
+        $(".divination").addClass("divinationBlack");
+        $(".divinationSolid").addClass("divinationBlack");
+        $(".divination").removeClass("divination");
+        $(".divinationSolid").removeClass("divinationSolid");
+
+        $(".enchantment").addClass("enchantmentBlack");
+        $(".enchantmentSolid").addClass("enchantmentBlack");
+        $(".enchantment").removeClass("enchantment");
+        $(".enchantmentSolid").removeClass("enchantmentSolid");
+
+        $(".illusion").addClass("illusionBlack");
+        $(".illusionSolid").addClass("illusionBlack");
+        $(".illusion").removeClass("illusion");
+        $(".illusionSolid").removeClass("illusionSolid");
+
+        $(".necromancy").addClass("necromancyBlack");
+        $(".necromancySolid").addClass("necromancyBlack");
+        $(".necromancy").removeClass("necromancy");
+        $(".necromancySolid").removeClass("necromancySolid");
+
+        $(".transmutation").addClass("transmutationBlack");
+        $(".transmutationSolid").addClass("transmutationBlack");
+        $(".transmutation").removeClass("transmutation");
+        $(".transmutationSolid").removeClass("transmutationSolid");
+    }
+
+</script>
+
+<div id="dataDiv" style="display: none;">
+    <div class="notice">
+        Spell cards should print with colors.  If they are not, please let me know.  Make sure you have background colors enabled on printing! See @Html.ActionLink("FAQ", "FAQ") for more info.<br />
+        Change border colors: <input type="button" onclick="gradientColor()" value="Gradients" /> <input type="button" onclick="solidColor()" value="Solids" /> <input type="button" onclick="blackColor()" value="Black" />
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                @{ int column = 0; }
+                @foreach (var spellModel in Model)
+                {
+                    int cards = 0;
+                    foreach (string desc in spellModel.descriptions)
+                    {
+                        if (cards == 0)
+                        {
+                            <td>
+                                <div class="cardbody @spellModel.spell.School.ToLower()">
+                                    <div class="header jtextfill">
+                                        <span class="cardbodyIconSpan">
+                                            @spellModel.spell.Name @if (spellModel.spell.IsRitual)
+                                            { <text>(Ritual)</text> }
+                                        </span>
+                                    </div>
+                                    <div class="subheader jtextfill">
+                                        <span class="cardbodyIconSpan">@spellModel.levelSchool</span>
+                                    </div>
+                                    <div class="action jtextfill">
+                                        <img src="~/Content/images/action.png" class="cardbodyIcon" /><span class="cardbodyIconSpan">@spellModel.spell.Action</span>
+                                    </div>
+                                    <div class="range jtextfill">
+                                        <img src="~/Content/images/range.png" class="cardbodyIcon" /><span class="cardbodyIconSpan">@spellModel.spell.Range</span>
+                                    </div>
+                                    <div class="components jtextfill">
+                                        <img src="~/Content/images/components.png" class="cardbodyIcon" /><span class="cardbodyIconSpan">@spellModel.components</span>
+                                    </div>
+                                    <div class="duration jtextfill">
+                                        <img src="~/Content/images/duration.png" class="cardbodyIcon" /><span class="cardbodyIconSpan">@spellModel.duration</span>
+                                    </div>
+                                    <div class="description jtextfill">
+                                        @Html.Raw(desc)
+                                    </div>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+
+                                <div class="cardbody @spellModel.spell.School.ToLower()">
+                                    <div class="header jtextfill">
+                                        <span class="cardbodyIconSpan">
+                                            @spellModel.spell.Name @if (spellModel.spell.IsRitual)
+                                            { <text>(Ritual)</text> }
+                                        </span>
+                                    </div>
+                                    <div class="fullDescription jtextfill">
+                                        @Html.Raw(desc)
+                                    </div>
+                                </div>
+
+                            </td>
+                        }
+                        column++;
+                        if (@column > 2)
+                        {
+                            @:
+                        <tr></tr>
+                            column = 0;
+                        }
+                        cards++;
+                    }
+                }
+                </tr>
+            </tbody>
+
+        </table>
+    </div>

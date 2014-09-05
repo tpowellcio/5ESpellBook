@@ -1,0 +1,46 @@
+﻿@model List<_5ESpellbook.Models.SpellModel>
+@{
+    ViewBag.Title = "Spellbook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#spinner").hide();
+    });
+
+    function loading() {
+        $(".notice").hide();
+        $("#spells").hide();
+        $("#spinner").show();
+    }
+</script>
+
+<h2>Spellbook</h2>
+@using (Html.BeginForm("SpellBookSort", "Home", FormMethod.Post))
+{
+    <div class="notice">
+        Sort by: <br />
+        <input type="submit" onclick="loading();" name="sortOrder" value="Alphabetical" /> <input type="submit" onclick="loading();" name="sortOrder" value="School-Level" /> <input type="submit" onclick="loading();" name="sortOrder" value="School-Alpha" /> <input type="submit" onclick="loading();" name="sortOrder" value="Level" />
+    </div>
+    <div id="spells">
+        @foreach (var spell in Model)
+        {
+            @Html.Hidden("spellID", spell.spell.SpellID)
+            <div>
+                <h3>
+                    @spell.spell.Name @if (spell.spell.IsRitual)
+                    { <span>(Ritual)</span> }
+                </h3>
+                <span style="font-weight: bold; font-style:italic">@spell.levelSchool</span><br />
+                <strong>Action:</strong> @spell.spell.Action<br />
+                <strong>Range:</strong> @spell.spell.Range<br />
+                <strong>Components:</strong> @spell.spell.Components<br />
+                <strong>Duration:</strong> @spell.spell.Duration<br />
+                <strong>Of Class:</strong> @spell.spell.OfClass<br />
+                <span>@Html.Raw(spell.spell.Description)</span>
+            </div>
+        }
+    </div>
+}
